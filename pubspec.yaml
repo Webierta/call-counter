@@ -1,4 +1,4 @@
-name: calling_plan_control
+name: call_counter
 description: Management of minutes consumed for outgoing calls.
 
 # The following line prevents the package from being accidentally published to

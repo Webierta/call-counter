@@ -25,7 +25,7 @@ class Donate extends StatelessWidget {
               Center(
                 child: Column(
                   children: [
-                    Text('Calling Plan Control', style: Theme.of(context).textTheme.headline5),
+                    Text('Call Counter', style: Theme.of(context).textTheme.headline5),
                     Icon(
                       Icons.favorite_border,
                       size: 60.0,

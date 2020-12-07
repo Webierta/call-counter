@@ -43,7 +43,7 @@ class LanguageEn extends Languages {
 
   // Info
   @override
-  String get textInfo => 'Calling Plan Control helps to manage the contracted '
+  String get textInfo => 'Call Counter helps to manage the contracted '
       'calling plan on your mobile phone.\n\n'
       'The App display the minutes consumed by outgoing calls in the current '
       'month (by default) or in a selected billing cycle. Outgoing calls can '
@@ -56,7 +56,7 @@ class LanguageEn extends Languages {
   @override
   String get source => 'Open Source';
   @override
-  String get textAbout => 'Calling Plan Control is Free and Open Source Software for the Android '
+  String get textAbout => 'Call Counter is Free and Open Source Software for the Android '
       'platform.\n\nSource code on Github. If you experience any problems or want to request an '
       'improvement, use this link to the project page on Github:';
   @override
@@ -79,7 +79,7 @@ class LanguageEn extends Languages {
 
   // Donar
   @override
-  String get textDonate => 'Calling Plan Control is Free and Open Source Software.\n\n'
+  String get textDonate => 'Call Counter is Free and Open Source Software.\n\n'
       'You can support the development of this and other applications with a small contribution '
       'to my Bitcoins wallet (press the button to copy the Bitcoin address):';
 

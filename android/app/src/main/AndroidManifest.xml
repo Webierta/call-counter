@@ -8,7 +8,7 @@
     <uses-permission android:name="android.permission.READ_CALL_LOG" />
     <application
         android:name="io.flutter.app.FlutterApplication"
-        android:label="calling_plan_control"
+        android:label="Call Counter"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"

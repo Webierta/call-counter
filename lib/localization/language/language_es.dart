@@ -43,7 +43,7 @@ class LanguageEs extends Languages {
 
   // Info
   @override
-  String get textInfo => 'Calling Plan Control sirve para gestionar el plan de llamadas '
+  String get textInfo => 'Call Counter sirve para gestionar el plan de llamadas '
       'contratado en tu teléfono movil.\n\n'
       'La App muestra los minutos consumidos por las llamadas realizadas en el mes actual '
       '(por defecto) o en un ciclo de facturación seleccionado. También se pueden '
@@ -56,8 +56,7 @@ class LanguageEs extends Languages {
   @override
   String get source => 'Código Abierto';
   @override
-  String get textAbout =>
-      'Calling Plan Control es Software libre y de Código Abierto para la plataforma '
+  String get textAbout => 'Call Counter es Software libre y de Código Abierto para la plataforma '
       'Android.\n\nCódigo fuente en Github. Si experimentas algún problema o quieres  '
       'proponer alguna mejora utiliza este enlace a la página del proyecto en Github:';
   @override
@@ -81,9 +80,9 @@ class LanguageEs extends Languages {
 
   // Donar
   @override
-  String get textDonate => 'Calling Plan Control es Software libre y de Código Abierto.\n\n'
+  String get textDonate => 'Call Counter es Software libre y de Código Abierto.\n\n'
       'Puedes colaborar con el desarrollo de ésta y otras aplicaciones con una pequeña '
-      'aportación a mi monedero de Bitcoins (pulsa el boton para copiar la dirección de Bitcoin):';
+      'aportación a mi monedero de Bitcoins (pulsa el botón para copiar la dirección de Bitcoin):';
 
   // TAB ONE
   @override

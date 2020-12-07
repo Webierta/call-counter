@@ -41,7 +41,7 @@ class NavigationDrawer extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            'Calling Plan Control',
+                            'Call Counter',
                             style: TextStyle(
                               color: Colors.white,
                               fontSize: 16.0,

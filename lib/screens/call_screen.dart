@@ -14,7 +14,7 @@ class CallScreen extends StatelessWidget {
       length: 2,
       child: Scaffold(
         appBar: AppBar(
-          title: Text('Calling Plan Control'),
+          title: Text('Call Counter'),
           actions: [
             IconButton(
               icon: Icon(Icons.settings),

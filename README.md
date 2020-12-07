@@ -1,5 +1,4 @@
 ![Screenshot](https://raw.githubusercontent.com/Webierta/call-counter/main/fastlane/metadata/android/en/images/icon.png)
-
 # Call Counter
 ## Management of minutes consumed in outgoing calls
 
@@ -8,7 +7,9 @@
 The App display the minutes consumed by outgoing calls in the current month (by default) or in a selected billing cycle. Outgoing calls can also be queried on a custom date range.
 
 *Call Counter* is Free and Open Source Software for the Android platform. The App is available in English and Spanish.
----
+
+![Screenshot](https://raw.githubusercontent.com/Webierta/call-counter/main/fastlane/metadata/android/en/images/phoneScreenshots/Screenshot_2.jpg)
+![Screenshot](https://raw.githubusercontent.com/Webierta/call-counter/main/fastlane/metadata/android/en/images/phoneScreenshots/Screenshot_1.jpg)
 
 ## Gestión del tiempo consumido en las llamadas realizadas
 

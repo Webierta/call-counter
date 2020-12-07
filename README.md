@@ -1,5 +1,7 @@
-![Screenshot](https://raw.githubusercontent.com/Webierta/call-counter/main/fastlane/metadata/android/en/images/icon.png)
 # Call Counter
+
+![Screenshot](https://raw.githubusercontent.com/Webierta/call-counter/main/fastlane/metadata/android/en/images/icon.png)
+
 ## Management of minutes consumed in outgoing calls
 
 *Call Counter* helps control the calling plan contracted on your mobile phone.

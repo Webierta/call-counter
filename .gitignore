@@ -83,3 +83,39 @@ lint/generated/
 lint/outputs/
 lint/tmp/
 # lint/reports/
+
+# Flutter/Dart/Pub related
+**/doc/api/
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+**/generated_plugin_registrant.dart
+.packages
+.pub-cache/
+.pub/
+flutter_*.png
+linked_*.ds
+unlinked.ds
+unlinked_spec.ds
+
+# packages file containing multi-root paths
+.packages.generated
+
+# Visual Studio Code related
+.classpath
+.project
+.settings/
+.vscode/
+
+# Android related
+**/android/**/gradle-wrapper.jar
+**/android/.gradle
+**/android/captures/
+**/android/gradlew
+**/android/gradlew.bat
+**/android/local.properties
+**/android/**/GeneratedPluginRegistrant.java
+**/android/key.properties
+*.jks
+
+

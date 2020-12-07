@@ -1,0 +1,3 @@
+<p>Call Counter ayuda a controlar el plan de llamadas contratado en tu teléfono movil.</p>
+<p>La App muestra los minutos consumidos por las llamadas realizadas en el mes actual (por defecto) o en un ciclo de facturación seleccionado. También se pueden consultar las llamadas realizadas en un rango seleccionado de fechas.</p>
+<p>Call Counter es software libre y abierto para Android. La App está disponible en inglés y en español.</p>

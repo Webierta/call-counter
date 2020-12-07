@@ -1,0 +1,3 @@
+<p>Call Counter helps control the calling plan contracted on your mobile phone.</p>
+<p>The App display the minutes consumed by outgoing calls in the current month (by default) or in a selected billing cycle. Outgoing calls can also be queried on a custom date range.</p>
+<p>Call Counter is Free and Open Source Software for the Android platform. The App is available in English and Spanish.</p>

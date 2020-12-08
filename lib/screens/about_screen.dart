@@ -9,7 +9,7 @@ class About extends StatelessWidget {
   static const String id = 'about';
 
   _launchURL() async {
-    const url = 'https://github.com/Webierta/precio-luz/issues';
+    const url = 'https://github.com/Webierta/call-counter/issues';
     if (await canLaunch(url)) {
       await launch(url);
     } else {

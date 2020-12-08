@@ -1,6 +1,5 @@
 # Call Counter
 
-![Screenshot](https://raw.githubusercontent.com/Webierta/call-counter/main/fastlane/metadata/android/en/images/icon.png)
 [![download](https://github.com/Webierta/siete_media/blob/master/apk/download.png)](https://github.com/Webierta/call-counter/raw/main/apk/app-release.apk)
 
 ## Management of minutes consumed in outgoing calls

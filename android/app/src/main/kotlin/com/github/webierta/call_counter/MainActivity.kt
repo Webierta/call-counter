@@ -1,4 +1,4 @@
-package com.github.webierta.calling_plan_control
+package com.github.webierta.call_counter
 
 import io.flutter.embedding.android.FlutterActivity
 

@@ -1,5 +1,7 @@
 # Call Counter
 
+## Calling Plan Control
+
 [![download](https://github.com/Webierta/siete_media/blob/master/apk/download.png)](https://github.com/Webierta/call-counter/raw/main/apk/app-release.apk)
 
 ## Management of minutes consumed in outgoing calls

@@ -20,3 +20,11 @@ The App display the minutes consumed by outgoing calls in the current month (by 
 La App muestra los minutos consumidos por las llamadas realizadas en el mes actual (por defecto) o en un ciclo de facturación seleccionado. También se pueden consultar las llamadas realizadas en un rango seleccionado de fechas.
 
 *Call Counter* es software libre y abierto para Android. La App está disponible en inglés y en español.
+
+## Verwaltung der über ausgehende Anrufe verbrauchten Minuten
+
+*Call Counter* hilft dabei, die Inklusivminuten des abgeschlossenen Vertrages zu verwalten.
+
+Diese App zeigt die verbrauchten Minuten durch ausgehende Anrufe des aktuellen Monats (Standard) oder nach ausgewählten Rechnungszeitraum an. Ausgehende Anrufe können ebenfalls nach benutzerdefinierter Datumsauswahl abgefragt werden.
+
+*Call Counter* ist eine kostenlose und quelloffene Software für die Android Plattform. Die App ist in Englisch, Spanisch und Deutsch verfügbar.

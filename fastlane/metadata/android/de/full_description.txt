@@ -1,0 +1,3 @@
+<p>Call Counter hilft dabei, die Inklusivminuten des abgeschlossenen Vertrages zu verwalten.</p>
+<p>Diese App zeigt die verbrauchten Minuten durch ausgehende Anrufe des aktuellen Monats (Standard) oder nach ausgewählten Rechnungszeitraum an. Ausgehende Anrufe können ebenfalls nach benutzerdefinierter Datumsauswahl abgefragt werden.</p>
+<p>Call Counter ist eine kostenlose und quelloffene Software für die Android Plattform. Die App ist in Englisch, Spanisch und Deutsch verfügbar.</p>

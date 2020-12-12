@@ -20,6 +20,7 @@ class LanguageData {
     return <LanguageData>[
       LanguageData(_countryCodeToFlag('us'), 'English', 'en'),
       LanguageData(_countryCodeToFlag('es'), 'Español', 'es'),
+      LanguageData(_countryCodeToFlag('de'), 'Deutsche', 'de'),
     ];
   }
 

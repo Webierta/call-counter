@@ -1,6 +1,6 @@
 import 'languages.dart';
 
-class LanguageEn extends Languages {
+class LanguageDe extends Languages {
   // SettingsScreen
   @override
   String get settings => 'Einstellungen';
@@ -56,7 +56,8 @@ class LanguageEn extends Languages {
   @override
   String get source => 'Open Source';
   @override
-  String get textAbout => 'Call Counter ist eine kostenlose und quelloffene Software für die Android '
+  String get textAbout =>
+      'Call Counter ist eine kostenlose und quelloffene Software für die Android '
       'Plattform.\n\nDer Quelltext ist auf Github einsehbar. Wenn Sie irgendwelce Probleme feststellen oder '
       'Sie möchten Verbesserungen vorschlagen, nutzen Sie den Link zur Projektseite auf Github:';
   @override
@@ -70,7 +71,7 @@ class LanguageEn extends Languages {
       'Diese Software ist frei von Spyware, Malware, Viren oder anderen Funktionen die '
       'Ihr Gerät angreifen oder Ihre Privatsphäre verletzen..';
   @override
-    String get textLicencia => 'Diese App wird unter den Bedingungen von GNU General Public verteilt '
+  String get textLicencia => 'Diese App wird unter den Bedingungen von GNU General Public verteilt '
       ' Lizenz v.3 in der Hoffnung, dass es nützlich sein wird, allerdings OHNE GARANTIEN.\n\n'
       'Dieses Programm ist freie Software: Sie können Sie weiter verteilen und modifizieren unter den Bedingungen '
       ' der GNU General Public Lizenz veröffentlich von der Free Software Foundation, version 3 '
@@ -79,10 +80,11 @@ class LanguageEn extends Languages {
 
   // Donar
   @override
-  String get textDonate => 'Bei Call Counter handelt es sich um kostenlose und quelloffene Software.\n\n'
+  String get textDonate =>
+      'Bei Call Counter handelt es sich um kostenlose und quelloffene Software.\n\n'
       'Sie können die Entwicklung diese und anderer Anwendung mit einer kleinen Spende '
       'an meine Bitcoinadresse unterstützen (zum Kopieren der Bitcoinadresse die Taste drücken):';
-    
+
 // TAB ONE
   @override
   String get minLibres => 'Min. verfügbar';

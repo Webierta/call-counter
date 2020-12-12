@@ -43,7 +43,7 @@ class LanguageEn extends Languages {
 
   // Info
   @override
-  String get textInfo => 'Call Counter hilft dabei, die Inklusivminuten in '
+  String get textInfo => 'Call Counter hilft dabei, die Inklusivminuten '
       'des abgeschlossenen Vertrages zu verwalten.\n\n'
       'Diese App zeigt die verbrauchten Minuten durch ausgehende Anrufe des aktuellen '
       'Monats (Standard) oder nach ausgewählten Rechnungszeitraum an. Ausgehende Anrufe können '

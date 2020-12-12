@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../models/language_data.dart';
 import 'language/language_en.dart';
 import 'language/language_es.dart';
+import 'language/language_de.dart';
 import 'language/languages.dart';
 
 class AppLocalizationsDelegate extends LocalizationsDelegate<Languages> {
@@ -21,6 +22,8 @@ class AppLocalizationsDelegate extends LocalizationsDelegate<Languages> {
         return LanguageEn();
       case 'es':
         return LanguageEs();
+      case 'de':
+        return LanguageDe();
       default:
         return LanguageEn();
     }

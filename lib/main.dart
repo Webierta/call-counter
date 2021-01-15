@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'localization/localizations_delegate.dart';
@@ -9,7 +10,12 @@ import 'screens/info_screen.dart';
 import 'screens/about_screen.dart';
 import 'screens/donate_screen.dart';
 
-void main() => runApp(MyApp());
+void main() {
+  //runApp(MyApp());
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
+      .then((_) => runApp(MyApp()));
+}
 
 class MyApp extends StatelessWidget {
   @override

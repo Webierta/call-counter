@@ -10,6 +10,10 @@ The App display the minutes consumed by outgoing calls in the current month (by 
 
 *Call Counter* is Free and Open Source Software for the Android platform. The App is available in English, German and Spanish.
 
+[<img src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png"
+     alt="Get it on F-Droid"
+     height="80">](https://f-droid.org/packages/com.github.webierta.call_counter/)
+
 ![Screenshot](https://raw.githubusercontent.com/Webierta/call-counter/main/fastlane/metadata/android/en-US/images/phoneScreenshots/Screenshot_2.jpg)
 ![Screenshot](https://raw.githubusercontent.com/Webierta/call-counter/main/fastlane/metadata/android/en-US/images/phoneScreenshots/Screenshot_1.jpg)
 

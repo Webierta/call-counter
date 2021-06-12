@@ -9,6 +9,10 @@ class LanguageEs extends Languages {
   @override
   String get labelSliderPlan => 'Minutos del plan de llamadas';
   @override
+  String get labelSliderPlanSms => 'Número de SMS del plan de mensajes';
+  @override
+  String get plan => 'Plan contratado';
+  @override
   String get planMensual => 'Plan mensual';
   @override
   String get startDay => 'Día de inicio';
@@ -43,12 +47,12 @@ class LanguageEs extends Languages {
 
   // Info
   @override
-  String get textInfo => 'Call Counter sirve para gestionar el plan de llamadas '
+  String get textInfo => 'Call Counter sirve para gestionar el plan de llamadas y de SMS '
       'contratado en tu teléfono movil.\n\n'
-      'La App muestra los minutos consumidos por las llamadas realizadas en el mes actual '
-      '(por defecto) o en un ciclo de facturación seleccionado. También se pueden '
-      'consultar las llamadas realizadas en un rango seleccionado de fechas.\n\n'
-      'La App está disponible en inglés y en español.';
+      'La App muestra los minutos consumidos por las llamadas realizadas y el número de mensajes '
+      'SMS enviados en el mes actual (por defecto) o en un ciclo de facturación seleccionado. '
+      'También se puede consultar un rango seleccionado de fechas.\n\n'
+      'La App está disponible en inglés, alemán y español.';
 
   // About
   @override
@@ -80,19 +84,35 @@ class LanguageEs extends Languages {
 
   // Donar
   @override
-  String get textDonate => 'Call Counter es Software libre y de Código Abierto.\n\n'
+  String get textDonate => 'Call Counter es Software libre y de Código Abierto. '
+      'Por favor considera colaborar para mantener activo el desarrollo de esta App.\n\n'
       'Puedes colaborar con el desarrollo de ésta y otras aplicaciones con una pequeña '
-      'aportación a mi monedero de Bitcoins (pulsa el botón para copiar la dirección de Bitcoin):';
+      'aportación a mi monedero de Bitcoins o vía Paypal:';
+  @override
+  String get textPaypal => 'Donar vía PayPal (abre el sitio web de pago de PayPal):';
 
   // TAB ONE
   @override
   String get minLibres => 'min. libres';
   @override
   get callOut => 'llamadas realizadas';
+  @override
+  get callOutSingle => 'llamada realizada';
+  @override
+  get detalleCall => 'Detalle Llamadas';
 
   //TAB TWO
   @override
   String get noCalls => 'Ninguna llamada realizada.';
   @override
   String get sec => 'seg.';
+  String get noSms => 'Ningún mensage SMS enviado.';
+  @override
+  String get smsLibres => 'SMS libres';
+  @override
+  get smsOut => 'mensajes enviados';
+  @override
+  get smsOutSingle => 'mensaje enviado';
+  @override
+  get detalleSms => 'Detalle SMS';
 }

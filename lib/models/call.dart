@@ -31,7 +31,7 @@ class Call {
     int duracionSec = 0;
     for (CallLogEntry entry in _callLog) {
       totalLlamadas++;
-      duracionSec += entry.duration;
+      duracionSec += entry.duration ?? 0;
     }
     _totalOut = totalLlamadas;
     _duracion = duracionSec;
@@ -40,9 +40,9 @@ class Call {
   void _setLogCall() {
     _callLog.forEach((entry) {
       _entriesCall.add(LogCall(
-        number: entry.number,
-        timestamp: entry.timestamp,
-        duration: entry.duration,
+        number: entry.number.toString(),
+        timestamp: entry.timestamp ?? 0,
+        duration: entry.duration ?? 0,
       ));
     });
   }
@@ -53,5 +53,5 @@ class LogCall {
   final int timestamp;
   final int duration;
 
-  LogCall({this.duration, this.timestamp, this.number});
+  LogCall({required this.duration, required this.timestamp, required this.number});
 }

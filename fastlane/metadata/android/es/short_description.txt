@@ -1,1 +1,1 @@
-Control del Plan de llamadas: Gestión del tiempo consumido en las llamadas realizadas
+Control del Plan de llamadas y de sms enviados

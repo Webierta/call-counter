@@ -1,1 +1,1 @@
-Calling Plan Control: Management of minutes consumed in outgoing calls
+Control of the Plan of outgoing calls and sent sms

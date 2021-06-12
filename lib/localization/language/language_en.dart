@@ -9,6 +9,10 @@ class LanguageEn extends Languages {
   @override
   String get labelSliderPlan => 'Calling plan minutes';
   @override
+  String get labelSliderPlanSms => 'Number of SMS in the message plan';
+  @override
+  String get plan => 'Contracted plan';
+  @override
   String get planMensual => 'Monthly plan';
   @override
   String get startDay => 'Start day';
@@ -43,12 +47,12 @@ class LanguageEn extends Languages {
 
   // Info
   @override
-  String get textInfo => 'Call Counter helps to manage the contracted '
-      'calling plan on your mobile phone.\n\n'
-      'The App display the minutes consumed by outgoing calls in the current '
-      'month (by default) or in a selected billing cycle. Outgoing calls can '
-      'also be queried on a custom date range.\n\n'
-      'The App is available in English and Spanish.';
+  String get textInfo => 'Call Counter helps to manage the call and SMS plan contracted '
+      'on your mobile phone.\n\n'
+      'The App display the minutes consumed by outgoing calls and the number of SMS messages sent '
+      'in the current month (by default) or in a selected billing cycle. A selected range of dates '
+      'can also be queried.\n\n'
+      'The App is available in English, German and Spanish.';
 
   // About
   @override
@@ -79,19 +83,35 @@ class LanguageEn extends Languages {
 
   // Donar
   @override
-  String get textDonate => 'Call Counter is Free and Open Source Software.\n\n'
+  String get textDonate => 'Call Counter is Free and Open Source Software. '
+      'Please consider collaborating to keep the development of this App active.\n\n'
       'You can support the development of this and other applications with a small contribution '
-      'to my Bitcoins wallet (press the button to copy the Bitcoin address):';
+      'to my Bitcoins wallet or via Paypal:';
+  @override
+  String get textPaypal => 'Donate vía PayPal (open the PayPal payment website):';
 
 // TAB ONE
   @override
   String get minLibres => 'min. free';
   @override
   get callOut => 'outgoing calls';
+  @override
+  get callOutSingle => 'outgoing call';
+  @override
+  get detalleCall => 'Call details';
 
 //TAB TWO
   @override
   String get noCalls => 'No outgoing calls.';
   @override
   String get sec => 'sec.';
+  String get noSms => 'No SMS messages sent.';
+  @override
+  String get smsLibres => 'SMS free';
+  @override
+  get smsOut => 'sent messages';
+  @override
+  get smsOutSingle => 'sent message';
+  @override
+  get detalleSms => 'SMS detail ';
 }

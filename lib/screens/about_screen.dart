@@ -62,7 +62,7 @@ class About extends StatelessWidget {
               Container(
                 padding: const EdgeInsets.symmetric(vertical: 10.0),
                 alignment: Alignment.center,
-                child: RaisedButton.icon(
+                child: ElevatedButton.icon(
                   onPressed: () => _launchURL(),
                   icon: Icon(Icons.bug_report),
                   label: Text('Bug report'),

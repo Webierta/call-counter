@@ -8,7 +8,7 @@ class Fecha extends StatelessWidget {
   final String label;
   final Function update;
 
-  Fecha({this.fecha, this.label, this.update});
+  Fecha({required this.fecha, required this.label, required this.update});
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +16,7 @@ class Fecha extends StatelessWidget {
     Color colorCustom = _myProvider.ciclo == CicloPlan.custom ? Colors.white : Colors.grey;
 
     Future<DateTime> _selectDate(DateTime fecha) async {
-      final DateTime picked = await showDatePicker(
+      final DateTime? picked = await showDatePicker(
         initialEntryMode: DatePickerEntryMode.calendar,
         fieldHintText: _myProvider.lang == 'es' ? 'dd/mm/aaaa' : 'mm/dd/yyyy',
         context: context,

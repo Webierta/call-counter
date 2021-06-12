@@ -1,27 +1,28 @@
-import '../screens/detalle_call.dart';
+import 'package:circular_countdown/circular_countdown.dart';
+
+import '../localization/language/languages.dart';
+import '../screens/detalle_sms.dart';
+import '../models/data.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:circular_countdown/circular_countdown.dart';
-import '../models/data.dart';
-import '../localization/language/languages.dart';
 
-class TabOne extends StatelessWidget {
+class TabSms extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var myProvider = Provider.of<Data>(context);
     Languages lang = Languages.of(context);
-    int minutosPlan = myProvider.minutosPlan ?? 200;
+    int numberPlanSms = myProvider.numberPlanSms ?? 1000;
 
-    String minutosLibres = () {
-      if (minutosPlan == 0) return '∞';
-      if (myProvider.timeCalls > minutosPlan) return '0';
-      return '${minutosPlan - myProvider.timeCalls}';
+    String smsLibres = () {
+      if (numberPlanSms == 0) return '∞';
+      if (myProvider.smsCount > numberPlanSms) return '0';
+      return '${numberPlanSms - myProvider.smsCount}';
     }();
 
     Color color = () {
-      if ((myProvider.timeCalls * 100) / minutosPlan < 50) return Colors.lightGreen;
-      if ((myProvider.timeCalls * 100) / minutosPlan < 75) return Colors.orangeAccent;
-      if (myProvider.minutosPlan == 0) return Theme.of(context).backgroundColor;
+      if ((myProvider.smsCount * 100) / numberPlanSms < 50) return Colors.lightGreen;
+      if ((myProvider.smsCount * 100) / numberPlanSms < 75) return Colors.orangeAccent;
+      if (myProvider.numberPlanSms == 0) return Theme.of(context).backgroundColor;
       return Colors.redAccent;
     }();
 
@@ -33,10 +34,10 @@ class TabOne extends StatelessWidget {
             children: [
               Center(
                 child: CircularCountdown(
-                  countdownTotal: minutosPlan == 0 ? 500 : minutosPlan, // ?? 0,
-                  countdownRemaining: myProvider.timeCalls > minutosPlan
-                      ? myProvider.minutosPlan
-                      : myProvider.timeCalls,
+                  countdownTotal: numberPlanSms == 0 ? 1000 : numberPlanSms, // ?? 0,
+                  countdownRemaining: myProvider.smsCount > numberPlanSms
+                      ? myProvider.numberPlanSms
+                      : myProvider.smsCount,
                   countdownRemainingColor: color,
                   diameter: MediaQuery.of(context).size.width * 0.60,
                   isClockwise: false,
@@ -49,10 +50,10 @@ class TabOne extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        minutosLibres,
+                        smsLibres,
                         style: TextStyle(fontSize: 60.0, fontWeight: FontWeight.bold),
                       ),
-                      Text(lang.minLibres),
+                      Text(lang.smsLibres),
                     ],
                   ),
                 ),
@@ -60,18 +61,16 @@ class TabOne extends StatelessWidget {
             ],
           ),
           Padding(
-            //padding: const EdgeInsets.symmetric(horizontal: 40.0),
             padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 20),
             child: Stack(
               children: [
                 ClipRRect(
                   borderRadius: BorderRadius.all(Radius.circular(20)),
                   child: LinearProgressIndicator(
-                    //backgroundColor: Colors.blueGrey[400], //cyanAccent,
                     backgroundColor: Colors.grey[700],
                     valueColor: AlwaysStoppedAnimation<Color>(color),
                     minHeight: 50.0,
-                    value: myProvider.timeCalls > minutosPlan ? 1.0 : myProvider.progress,
+                    value: myProvider.smsCount > numberPlanSms ? 1.0 : myProvider.progressSms,
                   ),
                 ),
                 SizedBox(
@@ -80,7 +79,7 @@ class TabOne extends StatelessWidget {
                     padding: const EdgeInsets.only(left: 10.0),
                     child: Align(
                       alignment: Alignment.centerLeft,
-                      child: Text('${myProvider.timeCalls} min'),
+                      child: Text('${myProvider.smsCount} SMS'),
                     ),
                   ),
                 ),
@@ -89,8 +88,8 @@ class TabOne extends StatelessWidget {
                   child: Align(
                     alignment: Alignment.center,
                     child: Text(
-                      myProvider.minutosPlan != 0
-                          ? '${((myProvider.timeCalls * 100) / minutosPlan).toStringAsFixed(0)} %'
+                      myProvider.numberPlanSms != 0
+                          ? '${((myProvider.smsCount * 100) / numberPlanSms).toStringAsFixed(0)} %'
                           : '',
                       style: TextStyle(fontSize: 24.0),
                     ),
@@ -102,8 +101,8 @@ class TabOne extends StatelessWidget {
                     padding: const EdgeInsets.only(right: 10.0),
                     child: Align(
                       alignment: Alignment.centerRight,
-                      child:
-                          Text(myProvider.minutosPlan != 0 ? '${myProvider.minutosPlan} min' : '∞'),
+                      child: Text(
+                          myProvider.numberPlanSms != 0 ? '${myProvider.numberPlanSms} SMS' : '∞'),
                     ),
                   ),
                 ),
@@ -111,27 +110,24 @@ class TabOne extends StatelessWidget {
             ),
           ),
           Padding(
-            //padding: const EdgeInsets.all(20.0),
             padding: const EdgeInsets.symmetric(horizontal: 40),
             child: Chip(
               labelPadding: EdgeInsets.all(10.0),
-              //labelPadding: EdgeInsets.symmetric(horizontal: 70, vertical: 10),
               backgroundColor: Colors.grey[700],
               avatar: CircleAvatar(
                 backgroundColor: color,
-                //radius: double.infinity,
-                child: Text('${myProvider.totalCalls}', style: TextStyle(color: Colors.white)),
+                child: Text('${myProvider.smsCount}', style: TextStyle(color: Colors.white)),
               ),
               label: Container(
                 width: double.infinity,
                 child: FittedBox(
                   fit: BoxFit.scaleDown,
                   alignment: Alignment.centerLeft,
-                  child: Text(myProvider.totalCalls == 1 ? lang.callOutSingle : lang.callOut),
+                  child: Text(myProvider.smsCount == 1 ? lang.smsOutSingle : lang.smsOut),
                 ),
               ),
               deleteIcon: Icon(Icons.list_alt),
-              onDeleted: () => Navigator.pushNamed(context, DetalleCall.id),
+              onDeleted: () => Navigator.pushNamed(context, DetalleSms.id),
             ),
           ),
         ],

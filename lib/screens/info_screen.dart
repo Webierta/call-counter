@@ -11,10 +11,7 @@ class Info extends StatelessWidget {
         title: Text('Info'),
         leading: IconButton(
           icon: Icon(Icons.close),
-          onPressed: () {
-            //Navigator.pop(context);
-            Navigator.of(context).pop();
-          },
+          onPressed: () => Navigator.of(context).pop(),
         ),
       ),
       body: SingleChildScrollView(
@@ -27,19 +24,12 @@ class Info extends StatelessWidget {
                 child: Column(
                   children: [
                     Text('Call Counter', style: Theme.of(context).textTheme.headline5),
-                    Icon(
-                      Icons.info,
-                      size: 60.0,
-                      color: Colors.cyan[200],
-                    ),
+                    Icon(Icons.info, size: 60.0, color: Colors.cyan[200]),
                   ],
                 ),
               ),
               SizedBox(height: 20.0),
-              Text(
-                Languages.of(context).textInfo,
-                style: Theme.of(context).textTheme.subtitle1,
-              ),
+              Text(Languages.of(context).textInfo, style: Theme.of(context).textTheme.subtitle1),
             ],
           ),
         ),

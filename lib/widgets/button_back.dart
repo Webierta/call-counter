@@ -13,21 +13,17 @@ class ButtonBack extends StatelessWidget {
       onPressed: () {
         _myProvider
           ..updateDropDown = _myProvider.lang
-          ..updateSlider = _myProvider.minutosPlan
+          ..updateSlider = _myProvider.minutosPlan ?? 200
           ..ciclo = CicloPlan.mensual
           ..updateDiaField = _myProvider.diaD
           ..setFromDatePicked(DateTime(DateTime.now().year, DateTime.now().month, 1))
           ..setToDatePicked(DateTime.now());
-        const int sec = 1;
+
         final SnackBar snackBar = SnackBar(
           content: Text(Languages.of(context).snackBar),
-          duration: Duration(seconds: sec),
         );
-        Scaffold.of(context).showSnackBar(snackBar);
-        Future.delayed(
-          Duration(seconds: sec),
-          () => Navigator.pushNamed(context, CallScreen.id),
-        );
+        ScaffoldMessenger.of(context).showSnackBar(snackBar);
+        Navigator.pushNamed(context, CallScreen.id);
       },
     );
   }

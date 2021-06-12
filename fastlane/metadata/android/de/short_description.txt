@@ -1,1 +1,1 @@
-Kontrolle über Inklusivminuten: Verwaltung der über ausgehende Anrufe verbrauchten Minuten
+Kontrolle des Plans von ausgehenden Anrufen und gesendeten SMS

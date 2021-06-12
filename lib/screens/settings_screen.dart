@@ -28,7 +28,7 @@ class SettingsScreen extends StatelessWidget {
             title: Text(titulo),
             content: Text(contenido),
             actions: <Widget>[
-              FlatButton(
+              TextButton(
                 child: Text(lang.close),
                 onPressed: () => Navigator.of(context).pop(),
               )
@@ -38,190 +38,187 @@ class SettingsScreen extends StatelessWidget {
       );
     }
 
+    void getData() async {
+      bool error = false;
+      if (_myProvider.ciclo == CicloPlan.custom) {
+        if (_myProvider.fromDatePicked.difference(_myProvider.toDatePicked).inDays > 0) {
+          error = true;
+          _showDialog('Error', lang.errorRange);
+        } else {
+          _myProvider.setDates(_myProvider.fromDatePicked.millisecondsSinceEpoch,
+              _myProvider.toDatePicked.millisecondsSinceEpoch + 86400000);
+        }
+      } else {
+        if (int.parse(_controller.text) < 1 || int.parse(_controller.text) > 31) {
+          error = true;
+          _showDialog('Error', lang.errorDay);
+        } else {
+          _myProvider.updateDiaField = int.parse(_controller.text);
+          _myProvider.setPrefDia = _myProvider.diaField;
+        }
+      }
+      if (!error) {
+        _myProvider.setPrefPlan = _myProvider.sliderValor;
+        _myProvider.setPrefPlanSms = _myProvider.sliderValorSms;
+        _myProvider.setPrefLang = _myProvider.dropdownValor;
+        Navigator.pushNamed(context, CallScreen.id);
+      }
+    }
+
     return Scaffold(
       appBar: AppBar(
         title: Text(lang.settings),
-        leading: _myProvider.minutosPlan != null ? ButtonBack() : null,
+        leading: _myProvider.minutosPlan != 0 ? ButtonBack() : null,
+        actions: [
+          IconButton(
+            onPressed: getData,
+            icon: Icon(Icons.save, color: Colors.cyan[200]),
+          ),
+        ],
       ),
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 40.0, vertical: 30.0),
+        padding: const EdgeInsets.symmetric(horizontal: 40.0, vertical: 20.0),
         child: SingleChildScrollView(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              InputDecorator(
-                decoration: InputDecoration(
-                  labelText: lang.labelSelectLanguage,
-                  enabled: true,
-                  contentPadding: EdgeInsets.only(left: 20.0, bottom: 10.0),
-                  labelStyle: TextStyle(fontSize: 20.0),
-                ),
-                child: Container(
-                  padding: const EdgeInsets.only(bottom: 10.0, right: 20.0),
-                  alignment: Alignment.centerRight,
-                  child: FractionallySizedBox(
-                    widthFactor: 0.6,
-                    child: DropdownButton<String>(
-                      value: _myProvider.dropdownValor,
-                      iconSize: 24,
-                      elevation: 16,
-                      underline: Container(
-                        height: 2,
-                        color: Theme.of(context).accentColor,
-                      ),
-                      isExpanded: true,
-                      onChanged: (String value) {
-                        _myProvider.updateDropDown = value;
-                        _myProvider.setPrefLang = _myProvider.dropdownValor;
-                      },
-                      items: LanguageData.langs
-                          .map(
-                            (lang) => DropdownMenuItem(
-                              value: lang.languageCode,
-                              child: Text('${lang.flag}  ${lang.name}'),
-                            ),
-                          )
-                          .toList(),
-                    ),
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(top: 20.0),
-                child: InputDecorator(
-                  decoration: InputDecoration(
-                    labelText: lang.labelSliderPlan,
-                    enabled: true,
-                    contentPadding: EdgeInsets.only(left: 20.0, bottom: 10.0),
-                    labelStyle: TextStyle(fontSize: 20.0),
-                  ),
-                  child: Row(
-                    children: <Widget>[
-                      SizedBox(
-                        width: 40.0,
-                        child: Text(
-                          _myProvider.sliderValor == 0 ? '∞' : '${_myProvider.sliderValor}',
-                          style: TextStyle(fontSize: 18.0),
-                        ),
-                      ),
-                      Expanded(
-                        child: Slider(
-                          value: _myProvider.sliderValor?.toDouble(),
-                          min: 0,
-                          max: 500,
-                          divisions: 100,
-                          activeColor: Theme.of(context).accentColor,
-                          label: _myProvider.sliderValor == 0
-                              ? lang.unlimited
-                              : _myProvider.sliderValor.toString() + ' min',
-                          onChanged: (double value) => _myProvider.updateSlider = value.toInt(),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(top: 20.0),
-                child: RadioListTile<CicloPlan>(
-                  title: Text(
-                    lang.planMensual,
-                    style: TextStyle(color: colorMensual),
-                  ),
-                  value: CicloPlan.mensual,
-                  groupValue: _myProvider.ciclo,
-                  activeColor: Theme.of(context).accentColor,
-                  onChanged: (value) {
-                    _myProvider
-                      ..ciclo = value
-                      ..setFromDatePicked(DateTime(DateTime.now().year, DateTime.now().month, 1))
-                      ..setToDatePicked(DateTime.now());
-                  },
-                  subtitle: TextFormField(
-                    decoration: InputDecoration(
-                      labelText: lang.startDay,
-                      enabled: _myProvider.ciclo == CicloPlan.custom ? false : true,
-                      suffixIcon: Icon(Icons.insert_invitation),
-                      contentPadding: EdgeInsets.only(top: 8.0),
-                    ),
-                    controller: _controller,
-                    onChanged: (value) => _myProvider.updateDiaField = int.parse(value),
-                    style: TextStyle(color: colorMensual),
-                    keyboardType: TextInputType.number,
-                    inputFormatters: <TextInputFormatter>[FilteringTextInputFormatter.digitsOnly],
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(top: 10.0, bottom: 20.0),
-                child: RadioListTile<CicloPlan>(
-                  title: Text(
-                    lang.customDate,
-                    style: TextStyle(color: colorCustom),
-                  ),
-                  value: CicloPlan.custom,
-                  groupValue: _myProvider.ciclo,
-                  activeColor: Theme.of(context).accentColor,
-                  onChanged: (value) {
-                    _myProvider
-                      ..ciclo = value
-                      ..updateDiaField = _myProvider.diaD;
-                  },
-                  subtitle: Column(
-                    children: [
-                      Fecha(
-                        fecha: _myProvider.fromDatePicked,
-                        label: lang.fromDate,
-                        update: _myProvider.setFromDatePicked,
-                      ),
-                      Fecha(
-                        fecha: _myProvider.toDatePicked,
-                        label: lang.toDate,
-                        update: _myProvider.setToDatePicked,
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(bottom: 20.0),
-                child: Divider(height: 2.0, color: Colors.grey),
-              ),
+              Text(lang.labelSelectLanguage, style: TextStyle(color: Colors.grey)),
               Container(
-                width: double.infinity,
-                child: RaisedButton(
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-                  color: Theme.of(context).accentColor,
-                  elevation: 10.0,
-                  onPressed: () async {
-                    bool error = false;
-                    if (_myProvider.ciclo == CicloPlan.custom) {
-                      if (_myProvider.fromDatePicked.difference(_myProvider.toDatePicked).inDays >
-                          0) {
-                        error = true;
-                        _showDialog('Error', lang.errorRange);
-                      } else {
-                        _myProvider.setDates(_myProvider.fromDatePicked.millisecondsSinceEpoch,
-                            _myProvider.toDatePicked.millisecondsSinceEpoch + 86400000);
-                      }
-                    } else {
-                      if (int.parse(_controller.text) < 1 || int.parse(_controller.text) > 31) {
-                        error = true;
-                        _showDialog('Error', lang.errorDay);
-                      } else {
-                        _myProvider.updateDiaField = int.parse(_controller.text);
-                        _myProvider.setPrefDia = _myProvider.diaField;
-                      }
-                    }
-                    if (!error) {
-                      _myProvider.setPrefPlan = _myProvider.sliderValor;
+                padding: const EdgeInsets.only(right: 20.0),
+                alignment: Alignment.centerRight,
+                child: FractionallySizedBox(
+                  widthFactor: 0.6,
+                  child: DropdownButton<String>(
+                    value: _myProvider.dropdownValor,
+                    iconSize: 24,
+                    elevation: 16,
+                    underline: Container(height: 2, color: Theme.of(context).accentColor),
+                    isExpanded: true,
+                    onChanged: (value) {
+                      _myProvider.updateDropDown = value!;
                       _myProvider.setPrefLang = _myProvider.dropdownValor;
-                      Navigator.pushNamed(context, CallScreen.id);
-                    }
-                  },
-                  child: Text(lang.getData),
+                    },
+                    items: LanguageData.langs
+                        .map((lang) => DropdownMenuItem(
+                              value: lang.languageCode,
+                              child: FittedBox(child: Text('${lang.flag}  ${lang.name}')),
+                            ))
+                        .toList(),
+                  ),
                 ),
               ),
+              Divider(color: Colors.grey),
+              FittedBox(child: Text(lang.labelSliderPlan, style: TextStyle(color: Colors.grey))),
+              Row(
+                children: <Widget>[
+                  SizedBox(
+                    width: 40.0,
+                    child: FittedBox(
+                      fit: BoxFit.scaleDown,
+                      child: Text(
+                        _myProvider.sliderValor == 0 ? '∞' : '${_myProvider.sliderValor}',
+                        style: TextStyle(fontSize: 18.0),
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: Slider(
+                      value: _myProvider.sliderValor.toDouble(),
+                      min: 0,
+                      max: 500,
+                      divisions: 100,
+                      activeColor: Theme.of(context).accentColor,
+                      label: _myProvider.sliderValor == 0
+                          ? lang.unlimited
+                          : _myProvider.sliderValor.toString() + ' min',
+                      onChanged: (double value) => _myProvider.updateSlider = value.toInt(),
+                    ),
+                  ),
+                ],
+              ),
+              Divider(color: Colors.grey),
+              FittedBox(child: Text(lang.labelSliderPlanSms, style: TextStyle(color: Colors.grey))),
+              Row(
+                children: <Widget>[
+                  SizedBox(
+                    width: 40.0,
+                    child: FittedBox(
+                      fit: BoxFit.scaleDown,
+                      child: Text(
+                        _myProvider.sliderValorSms == 0 ? '∞' : '${_myProvider.sliderValorSms}',
+                        style: TextStyle(fontSize: 18.0),
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: Slider(
+                      value: _myProvider.sliderValorSms.toDouble(),
+                      min: 0,
+                      max: 2000,
+                      divisions: 200,
+                      activeColor: Theme.of(context).accentColor,
+                      label: _myProvider.sliderValorSms == 0
+                          ? lang.unlimited
+                          : _myProvider.sliderValorSms.toString(),
+                      onChanged: (double value) => _myProvider.updateSliderSms = value.toInt(),
+                    ),
+                  ),
+                ],
+              ),
+              Divider(color: Colors.grey),
+              FittedBox(child: Text(lang.plan, style: TextStyle(color: Colors.grey))),
+              RadioListTile<CicloPlan>(
+                title: Text(lang.planMensual, style: TextStyle(color: colorMensual)),
+                value: CicloPlan.mensual,
+                groupValue: _myProvider.ciclo,
+                activeColor: Theme.of(context).accentColor,
+                onChanged: (value) {
+                  _myProvider
+                    ..ciclo = value!
+                    ..setFromDatePicked(DateTime(DateTime.now().year, DateTime.now().month, 1))
+                    ..setToDatePicked(DateTime.now());
+                },
+                subtitle: TextFormField(
+                  decoration: InputDecoration(
+                    labelText: lang.startDay,
+                    enabled: _myProvider.ciclo == CicloPlan.custom ? false : true,
+                    suffixIcon: Icon(Icons.insert_invitation),
+                    contentPadding: EdgeInsets.only(top: 8.0),
+                  ),
+                  controller: _controller,
+                  onChanged: (value) => _myProvider.updateDiaField = int.parse(value),
+                  style: TextStyle(color: colorMensual),
+                  keyboardType: TextInputType.number,
+                  inputFormatters: <TextInputFormatter>[FilteringTextInputFormatter.digitsOnly],
+                ),
+              ),
+              RadioListTile<CicloPlan>(
+                title: Text(lang.customDate, style: TextStyle(color: colorCustom)),
+                value: CicloPlan.custom,
+                groupValue: _myProvider.ciclo,
+                activeColor: Theme.of(context).accentColor,
+                onChanged: (value) {
+                  _myProvider
+                    ..ciclo = value!
+                    ..updateDiaField = _myProvider.diaD;
+                },
+                subtitle: Column(
+                  children: [
+                    Fecha(
+                      fecha: _myProvider.fromDatePicked,
+                      label: lang.fromDate,
+                      update: _myProvider.setFromDatePicked,
+                    ),
+                    Fecha(
+                      fecha: _myProvider.toDatePicked,
+                      label: lang.toDate,
+                      update: _myProvider.setToDatePicked,
+                    ),
+                  ],
+                ),
+              ),
+              Divider(color: Colors.grey),
             ],
           ),
         ),

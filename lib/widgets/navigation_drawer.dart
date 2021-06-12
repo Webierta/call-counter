@@ -89,7 +89,7 @@ class NavigationDrawer extends StatelessWidget {
           ),
           Divider(color: Colors.grey),
           ListTile(
-            leading: Icon(Icons.favorite_border),
+            leading: Icon(Icons.local_cafe_outlined),
             title: Text(lang.donar),
             onTap: () {
               Navigator.pop(context);

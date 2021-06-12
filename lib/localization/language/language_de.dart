@@ -9,6 +9,10 @@ class LanguageDe extends Languages {
   @override
   String get labelSliderPlan => 'Inklusivminuten im Anrufplan';
   @override
+  String get labelSliderPlanSms => 'Anzahl der SMS im Nachrichtenplan';
+  @override
+  String get plan => 'Vertraglich vereinbarter Plan';
+  @override
   String get planMensual => 'Monatlicher Plan';
   @override
   String get startDay => 'Starttag';
@@ -43,12 +47,12 @@ class LanguageDe extends Languages {
 
   // Info
   @override
-  String get textInfo => 'Call Counter hilft dabei, die Inklusivminuten '
-      'des abgeschlossenen Vertrages zu verwalten.\n\n'
-      'Diese App zeigt die verbrauchten Minuten durch ausgehende Anrufe des aktuellen '
-      'Monats (Standard) oder nach ausgewählten Rechnungszeitraum an. Ausgehende Anrufe können '
-      'ebenfalls nach benutzerdefinierter Datumsauswahl abgefragt werden.\n\n'
-      'Diese App ist in Englisch, Spanisch und Deutsch verfügbar.';
+  String get textInfo => 'Call Counter wird verwendet, um den auf Ihrem Mobiltelefon '
+      'abgeschlossenen Anruf- und SMS-Plan zu verwalten.\n\n'
+      'Die App zeigt die verbrauchten Minuten der getätigten Anrufe und die Anzahl der gesendeten '
+      'SMS-Nachrichten im aktuellen Monat (standardmäßig) oder in einem ausgewählten '
+      'Abrechnungszyklus an. Es kann auch ein ausgewählter Datumsbereich abgefragt werden.\n\n'
+      'Die App ist in Englisch, Deutsch und Spanisch verfügbar.';
 
   // About
   @override
@@ -81,19 +85,35 @@ class LanguageDe extends Languages {
   // Donar
   @override
   String get textDonate =>
-      'Bei Call Counter handelt es sich um kostenlose und quelloffene Software.\n\n'
+      'Bei Call Counter handelt es sich um kostenlose und quelloffene Software. Bitte ziehen Sie '
+      'eine Zusammenarbeit in Betracht, um die Entwicklung dieser App aktiv zu halten.\n\n'
       'Sie können die Entwicklung diese und anderer Anwendung mit einer kleinen Spende '
-      'an meine Bitcoinadresse unterstützen (zum Kopieren der Bitcoinadresse die Taste drücken):';
+      'an meine Bitcoinadresse unterstützen oder per Paypal:';
+  @override
+  String get textPaypal => 'Über PayPal spenden (öffnet die PayPal-Zahlungsseite):';
 
 // TAB ONE
   @override
   String get minLibres => 'Min. verfügbar';
   @override
   get callOut => 'Ausgehende Anrufe';
+  @override
+  get callOutSingle => 'Ausgehender Anruf';
+  @override
+  get detalleCall => 'Anrufdetails';
 
 //TAB TWO
   @override
   String get noCalls => 'Keine ausgehenden Anrufe.';
   @override
   String get sec => 'Sek.';
+  String get noSms => 'Keine SMS-Nachrichten gesendet.';
+  @override
+  String get smsLibres => 'SMS verfügbar';
+  @override
+  get smsOut => 'gesendeten nachrichten';
+  @override
+  get smsOutSingle => 'Nachricht gesendet';
+  @override
+  get detalleSms => 'SMS-Details';
 }

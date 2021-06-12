@@ -1,12 +1,12 @@
 # Call Counter
 
-## Calling Plan Control
+## Calling and SMS Plan Control
 
-## Management of minutes consumed in outgoing calls
+## Control of the Plan of outgoing calls and sent sms
 
-*Call Counter* helps control the calling plan contracted on your mobile phone.
+*Call Counter* helps to manage the call and SMS plan contracted on your mobile phone.
 
-The App display the minutes consumed by outgoing calls in the current month (by default) or in a selected billing cycle. Outgoing calls can also be queried on a custom date range.
+The App display the minutes consumed by outgoing calls and the number of SMS messages sent in the current month (by default) or in a selected billing cycle. A selected range of dates can also be queried.
 
 *Call Counter* is Free and Open Source Software for the Android platform. The App is available in English, German and Spanish.
 
@@ -17,18 +17,18 @@ The App display the minutes consumed by outgoing calls in the current month (by 
 ![Screenshot](https://raw.githubusercontent.com/Webierta/call-counter/main/fastlane/metadata/android/en-US/images/phoneScreenshots/Screenshot_2.jpg)
 ![Screenshot](https://raw.githubusercontent.com/Webierta/call-counter/main/fastlane/metadata/android/en-US/images/phoneScreenshots/Screenshot_1.jpg)
 
-## Gestión del tiempo consumido en las llamadas realizadas
+## Control del Plan de llamadas y de SMS enviados
 
-*Call Counter* ayuda a controlar el plan de llamadas contratado en tu teléfono movil.
+*Call Counter* sirve para gestionar el plan de llamadas y de SMS contratado en tu teléfono movil.
 
-La App muestra los minutos consumidos por las llamadas realizadas en el mes actual (por defecto) o en un ciclo de facturación seleccionado. También se pueden consultar las llamadas realizadas en un rango seleccionado de fechas.
+La App muestra los minutos consumidos por las llamadas realizadas y el número de mensajes SMS enviados en el mes actual (por defecto) o en un ciclo de facturación seleccionado. También se puede consultar un rango seleccionado de fechas.
 
 *Call Counter* es software libre y abierto para Android. La App está disponible en inglés, alemán y español.
 
-## Verwaltung der über ausgehende Anrufe verbrauchten Minuten
+## Kontrolle des Plans von ausgehenden Anrufen und gesendeten SMS
 
-*Call Counter* hilft dabei, die Inklusivminuten des abgeschlossenen Vertrages zu verwalten.
+*Call Counter* wird verwendet, um den auf Ihrem Mobiltelefon abgeschlossenen Anruf- und SMS-Plan zu verwalten.
 
-Diese App zeigt die verbrauchten Minuten durch ausgehende Anrufe des aktuellen Monats (Standard) oder nach ausgewählten Rechnungszeitraum an. Ausgehende Anrufe können ebenfalls nach benutzerdefinierter Datumsauswahl abgefragt werden.
+Die App zeigt die verbrauchten Minuten der getätigten Anrufe und die Anzahl der gesendeten SMS-Nachrichten im aktuellen Monat (standardmäßig) oder in einem ausgewählten Abrechnungszyklus an. Es kann auch ein ausgewählter Datumsbereich abgefragt werden.
 
 *Call Counter* ist eine kostenlose und quelloffene Software für die Android Plattform. Die App ist in Englisch, Spanisch und Deutsch verfügbar.

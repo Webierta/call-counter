@@ -4,7 +4,6 @@ import '../localization/language/languages.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class Donate extends StatelessWidget {
-  static const String id = 'donate';
   static const String bitcoinAdress = '15ZpNzqbYFx9P7wg4U438JMwZr2q3W6fkS';
   static const String urlPayPal = 'https://www.paypal.com/donate?hosted_button_id=986PSAHLH6N4L';
 
@@ -17,7 +16,7 @@ class Donate extends StatelessWidget {
         await launch(url);
       } else {
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-          content: Text('Could not launch PayPal payment website.'),
+          content: const Text('Could not launch PayPal payment website.'),
         ));
       }
     }
@@ -25,7 +24,10 @@ class Donate extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(lang.donar),
-        leading: IconButton(icon: Icon(Icons.close), onPressed: () => Navigator.of(context).pop()),
+        leading: IconButton(
+          icon: const Icon(Icons.close),
+          onPressed: () => Navigator.of(context).pop(),
+        ),
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -37,30 +39,30 @@ class Donate extends StatelessWidget {
                 child: Column(
                   children: [
                     Text('Call Counter', style: Theme.of(context).textTheme.headline5),
-                    Icon(Icons.local_cafe_outlined, size: 60.0, color: Colors.cyan[200]),
-                    Text('Buy Me a Coffee'),
+                    const Icon(Icons.local_cafe_outlined, size: 60.0, color: Color(0xFF80DEEA)),
+                    const Text('Buy Me a Coffee'),
                   ],
                 ),
               ),
-              SizedBox(height: 20.0),
+              const SizedBox(height: 20.0),
               Text(lang.textDonate, style: Theme.of(context).textTheme.subtitle1),
-              SizedBox(height: 20),
-              Text('Scan this QR code with your wallet application:'),
-              SizedBox(height: 10.0),
+              const SizedBox(height: 20),
+              const Text('Scan this QR code with your wallet application:'),
+              const SizedBox(height: 10.0),
               Center(
                 child: FractionallySizedBox(
                   widthFactor: 0.5,
                   child: Image.asset('assets/images/Bitcoin_QR.png'),
                 ),
               ),
-              SizedBox(height: 20),
-              Text('Or copy the BTC Wallet Address:'),
-              SizedBox(height: 10),
+              const SizedBox(height: 20),
+              const Text('Or copy the BTC Wallet Address:'),
+              const SizedBox(height: 10),
               FittedBox(
                 fit: BoxFit.fitWidth,
                 child: Container(
                   decoration: BoxDecoration(
-                      borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                      borderRadius: const BorderRadius.all(Radius.circular(8.0)),
                       border: Border.all(color: Colors.white54, style: BorderStyle.solid)),
                   child: Row(
                     children: [
@@ -84,14 +86,15 @@ class Donate extends StatelessWidget {
                         height: 50,
                         decoration: BoxDecoration(
                           border: Border(
-                              left: BorderSide(color: Colors.white54, style: BorderStyle.solid)),
+                            left: BorderSide(color: Colors.white54, style: BorderStyle.solid),
+                          ),
                         ),
                         child: IconButton(
                           icon: const Icon(Icons.copy),
                           onPressed: () async {
                             await Clipboard.setData(ClipboardData(text: bitcoinAdress));
                             ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                              content: Text('BTC Address copied to Clipboard.'),
+                              content: const Text('BTC Address copied to Clipboard.'),
                             ));
                           },
                         ),
@@ -100,9 +103,9 @@ class Donate extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
               Text(lang.textPaypal, style: Theme.of(context).textTheme.subtitle1),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
               Align(
                 alignment: Alignment.center,
                 child: FractionallySizedBox(
@@ -111,7 +114,7 @@ class Donate extends StatelessWidget {
                     style: TextButton.styleFrom(
                       backgroundColor: Colors.white,
                       elevation: 10.0,
-                      padding: EdgeInsets.all(10),
+                      padding: const EdgeInsets.all(10),
                     ),
                     onPressed: () => _launchURL(urlPayPal),
                     child: Image.asset('assets/images/paypal_logo.png'),

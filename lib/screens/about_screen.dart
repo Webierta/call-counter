@@ -4,9 +4,7 @@ import '../localization/language/languages.dart';
 
 class About extends StatelessWidget {
   final String version;
-  About(this.version);
-
-  static const String id = 'about';
+  About({required this.version});
 
   _launchURL() async {
     const url = 'https://github.com/Webierta/call-counter/issues';
@@ -24,10 +22,8 @@ class About extends StatelessWidget {
       appBar: AppBar(
         title: Text(lang.about),
         leading: IconButton(
-          icon: Icon(Icons.close),
-          onPressed: () {
-            Navigator.of(context).pop();
-          },
+          icon: const Icon(Icons.close),
+          onPressed: () => Navigator.of(context).pop(),
         ),
       ),
       body: SingleChildScrollView(
@@ -40,12 +36,7 @@ class About extends StatelessWidget {
                 child: Column(
                   children: [
                     Text('Call Counter', style: Theme.of(context).textTheme.headline5),
-                    Icon(
-                      Icons.code,
-                      size: 60.0,
-                      color: Colors.cyan[200],
-                    ),
-                    //Text('Calling Plan Control', style: Theme.of(context).textTheme.headline4),
+                    const Icon(Icons.code, size: 60.0, color: Color(0xFF80DEEA)),
                     Text(
                       '${lang.version} $version (Copyleft 2020)\n'
                       'Jesús Cuerda (Webierta)\n'
@@ -56,7 +47,7 @@ class About extends StatelessWidget {
                   ],
                 ),
               ),
-              SizedBox(height: 20.0),
+              const SizedBox(height: 20.0),
               Text(lang.source, style: Theme.of(context).textTheme.headline6),
               Text(lang.textAbout),
               Container(
@@ -64,13 +55,13 @@ class About extends StatelessWidget {
                 alignment: Alignment.center,
                 child: ElevatedButton.icon(
                   onPressed: () => _launchURL(),
-                  icon: Icon(Icons.bug_report),
-                  label: Text('Bug report'),
+                  icon: const Icon(Icons.bug_report),
+                  label: const Text('Bug report'),
                 ),
               ),
               Text(lang.privacidad, style: Theme.of(context).textTheme.headline6),
               Text(lang.textPrivacidad),
-              SizedBox(height: 10.0),
+              const SizedBox(height: 10.0),
               Text(lang.licencia, style: Theme.of(context).textTheme.headline6),
               Text(lang.textLicencia),
             ],

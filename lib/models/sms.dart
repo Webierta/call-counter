@@ -6,18 +6,12 @@ class Sms {
 
   Sms(this._fromFecha, this._toFecha);
 
-  //SmsQuery _query = SmsQuery();
   List<SmsMessage> _messages = <SmsMessage>[];
   int _countSms = 0;
-
   List<LogSms> _entriesSms = <LogSms>[];
 
   int get countSms => _countSms;
   List<LogSms> get entriesSms => _entriesSms;
-
-  /*getSmsAll() async {
-    _messages = await _query.getAllSms;
-  }*/
 
   Future<void> setSmsLog() async {
     SmsQuery _query = SmsQuery();
@@ -44,37 +38,6 @@ class Sms {
   void setCountSms() {
     _countSms = _messages.length;
   }
-
-  /*getSmsSent() async {
-    SmsQuery _query = SmsQuery();
-    _messages = await _query.querySms(kinds: [SmsQueryKind.Sent]);
-  }*/
-
-  /*getSmsDate() async {
-    //final DateFormat formatoFecha = DateFormat.yMMMd(myProvider.lang);
-    for (var sms in _messages) {
-      //var fechaSms = DateTime.fromMillisecondsSinceEpoch(sms.dateSent);
-      print(sms.date?.millisecondsSinceEpoch);
-    }
-  }*/
-
-  /*getSmsNumber() async {
-    for (var sms in _messages) {
-      //var fechaSms = DateTime.fromMillisecondsSinceEpoch(sms.dateSent);
-      print(sms.address);
-    }
-  }*/
-
-  /*Future<void> getCountSms() async {
-    await getSmsSent();
-    // 2021-06-10 19:58:50.113
-    // 2021-06-10 19:55:00.322
-    // 1623347930113
-    // 1623347700322
-    await getSmsDate();
-    //await getSmsNumber();
-    _countSms = _messages.length;
-  }*/
 }
 
 class LogSms {

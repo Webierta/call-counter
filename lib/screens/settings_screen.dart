@@ -1,3 +1,6 @@
+import '../models/data_lang.dart';
+import '../utils/constantes.dart';
+import '../utils/shared_prefs.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
@@ -6,10 +9,22 @@ import '../models/language_data.dart';
 import '../models/data.dart';
 import '../widgets/button_back.dart';
 import '../widgets/fecha.dart';
-import 'call_screen.dart';
 
-class SettingsScreen extends StatelessWidget {
-  static const String id = 'settings_screen';
+class SettingsScreen extends StatefulWidget {
+  @override
+  _SettingsScreenState createState() => _SettingsScreenState();
+}
+
+class _SettingsScreenState extends State<SettingsScreen> {
+  final SharedPrefs _sharedPrefs = SharedPrefs();
+
+  @override
+  void initState() {
+    _initSharedPrefs();
+    super.initState();
+  }
+
+  Future<void> _initSharedPrefs() async => await _sharedPrefs.init();
 
   @override
   Widget build(BuildContext context) {
@@ -58,21 +73,27 @@ class SettingsScreen extends StatelessWidget {
         }
       }
       if (!error) {
-        _myProvider.setPrefPlan = _myProvider.sliderValor;
-        _myProvider.setPrefPlanSms = _myProvider.sliderValorSms;
-        _myProvider.setPrefLang = _myProvider.dropdownValor;
-        Navigator.pushNamed(context, CallScreen.id);
+        //_myProvider.setPrefPlan = _myProvider.sliderValor;
+        _sharedPrefs.plan = _myProvider.sliderValor;
+        //_myProvider.setPrefPlanSms = _myProvider.sliderValorSms;
+        _sharedPrefs.planSms = _myProvider.sliderValorSms;
+        //_myProvider.setPrefLang = _myProvider.dropdownValor;
+        context.read<DataLang>().setPrefLang = _myProvider.dropdownValor;
+        //context.select((DataLang lang) => lang.setPrefLang = _myProvider.dropdownValor);
+        _myProvider.updateCallSms();
+        Navigator.of(context).pushNamed(idCallScreen);
       }
     }
 
     return Scaffold(
       appBar: AppBar(
         title: Text(lang.settings),
-        leading: _myProvider.minutosPlan != 0 ? ButtonBack() : null,
+        leading: _sharedPrefs.plan != null ? ButtonBack() : null,
         actions: [
           IconButton(
             onPressed: getData,
-            icon: Icon(Icons.save, color: Colors.cyan[200]),
+            icon: const Icon(Icons.save, color: Color(0xFF80DEEA), size: 40),
+            padding: const EdgeInsets.only(right: 10),
           ),
         ],
       ),
@@ -97,7 +118,8 @@ class SettingsScreen extends StatelessWidget {
                     isExpanded: true,
                     onChanged: (value) {
                       _myProvider.updateDropDown = value!;
-                      _myProvider.setPrefLang = _myProvider.dropdownValor;
+                      //_myProvider.setPrefLang = _myProvider.dropdownValor;
+                      context.read<DataLang>().setPrefLang = _myProvider.dropdownValor;
                     },
                     items: LanguageData.langs
                         .map((lang) => DropdownMenuItem(
@@ -108,7 +130,7 @@ class SettingsScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              Divider(color: Colors.grey),
+              const Divider(color: Colors.grey),
               FittedBox(child: Text(lang.labelSliderPlan, style: TextStyle(color: Colors.grey))),
               Row(
                 children: <Widget>[
@@ -118,7 +140,7 @@ class SettingsScreen extends StatelessWidget {
                       fit: BoxFit.scaleDown,
                       child: Text(
                         _myProvider.sliderValor == 0 ? '∞' : '${_myProvider.sliderValor}',
-                        style: TextStyle(fontSize: 18.0),
+                        style: const TextStyle(fontSize: 18.0),
                       ),
                     ),
                   ),
@@ -137,7 +159,7 @@ class SettingsScreen extends StatelessWidget {
                   ),
                 ],
               ),
-              Divider(color: Colors.grey),
+              const Divider(color: Colors.grey),
               FittedBox(child: Text(lang.labelSliderPlanSms, style: TextStyle(color: Colors.grey))),
               Row(
                 children: <Widget>[
@@ -147,7 +169,7 @@ class SettingsScreen extends StatelessWidget {
                       fit: BoxFit.scaleDown,
                       child: Text(
                         _myProvider.sliderValorSms == 0 ? '∞' : '${_myProvider.sliderValorSms}',
-                        style: TextStyle(fontSize: 18.0),
+                        style: const TextStyle(fontSize: 18.0),
                       ),
                     ),
                   ),
@@ -166,7 +188,7 @@ class SettingsScreen extends StatelessWidget {
                   ),
                 ],
               ),
-              Divider(color: Colors.grey),
+              const Divider(color: Colors.grey),
               FittedBox(child: Text(lang.plan, style: TextStyle(color: Colors.grey))),
               RadioListTile<CicloPlan>(
                 title: Text(lang.planMensual, style: TextStyle(color: colorMensual)),
@@ -187,7 +209,7 @@ class SettingsScreen extends StatelessWidget {
                     contentPadding: EdgeInsets.only(top: 8.0),
                   ),
                   controller: _controller,
-                  onChanged: (value) => _myProvider.updateDiaField = int.parse(value),
+                  onChanged: (value) => _myProvider.updateDiaField = int.tryParse(value) ?? 1,
                   style: TextStyle(color: colorMensual),
                   keyboardType: TextInputType.number,
                   inputFormatters: <TextInputFormatter>[FilteringTextInputFormatter.digitsOnly],
@@ -201,7 +223,7 @@ class SettingsScreen extends StatelessWidget {
                 onChanged: (value) {
                   _myProvider
                     ..ciclo = value!
-                    ..updateDiaField = _myProvider.diaD;
+                    ..updateDiaField = _sharedPrefs.dia ?? 1; //_myProvider.diaD;
                 },
                 subtitle: Column(
                   children: [
@@ -218,7 +240,7 @@ class SettingsScreen extends StatelessWidget {
                   ],
                 ),
               ),
-              Divider(color: Colors.grey),
+              const Divider(color: Colors.grey),
             ],
           ),
         ),

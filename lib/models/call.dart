@@ -9,7 +9,6 @@ class Call {
   List<CallLogEntry> _callLog = <CallLogEntry>[];
   int _totalOut = 0;
   int _duracion = 0; // en segundos
-
   List<LogCall> _entriesCall = <LogCall>[];
 
   int get totalOut => _totalOut;

@@ -1,4 +1,4 @@
-import 'package:call_counter/localization/language/language_en.dart';
+import 'language_en.dart';
 import 'package:flutter/material.dart';
 
 abstract class Languages {

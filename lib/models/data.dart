@@ -153,11 +153,12 @@ class Data with ChangeNotifier {
     await _sharedPrefs.init();
     _sliderValor = _sharedPrefs.plan ?? 200;
     _sliderValorSms = _sharedPrefs.planSms ?? 1000;
-    _from = DateTime(DateTime.now().year, DateTime.now().month, _sharedPrefs.dia ?? 1)
-        .millisecondsSinceEpoch;
+    int _diaDate = _sharedPrefs.dia ?? 1;
+    int _mesDate = _diaDate <= DateTime.now().day ? DateTime.now().month : DateTime.now().month - 1;
+    _from = DateTime(DateTime.now().year, _mesDate, _diaDate).millisecondsSinceEpoch;
     _to = DateTime.now().millisecondsSinceEpoch + 86400000; // ??
     _dropdownValor = _sharedPrefs.lang ?? 'en';
-    _diaField = _sharedPrefs.dia ?? 1;
+    _diaField = _diaDate;
     notifyListeners();
   }
 
